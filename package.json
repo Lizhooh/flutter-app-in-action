@@ -1,0 +1,10 @@
+{
+  "name": "koa2-learning-notes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lizhooh",
+  "scripts": {
+    "start": "docsify serve --port 3001"
+  },
+  "license": "MIT"
+}
