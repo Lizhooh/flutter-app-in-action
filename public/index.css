@@ -26,6 +26,10 @@ pre {
     border-radius: 2px;
 }
 
+li > strong {
+    color: #f67 !important;
+}
+
 .sidebar {
     box-shadow: 1px 2px 24px rgba(1, 1, 1, 0.12);
 }
