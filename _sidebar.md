@@ -19,7 +19,7 @@
   * [应用打包](/docs/第一章/1.13.md)
 * <a href="/#/docs/第二章/2.md"><b>第二章 · 组件篇</b></a>
   * [Container（容器）]()
-  * [AppBar（顶端栏）]()
+  * [AppBar（顶端栏）](/docs/第二章/2.2.md)
   * [Tabs（标签栏）](/docs/第二章/2.3.md)
   * [Drawer（抽屉菜单）](/docs/第二章/2.4.md)
   * [Navigation（导航）](/docs/第二章/2.5.md)
