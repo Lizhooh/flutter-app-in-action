@@ -31,7 +31,7 @@
   * [Checkbox（复选框）](/docs/第二章/2.10.md)
   * [Radio（单选框）](/docs/第二章/2.11.md)
   * [Switch（切换）](/docs/第二章/2.12.md)
-  * [Slider（滑块）]()
+  * [Slider（滑块）](/docs/第二章/2.13.md)
   * [DatePicker（日期）]()
   * [ScrollView（滚动视图）]()
   * [ListView（列表）]()
