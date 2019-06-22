@@ -86,3 +86,18 @@ new ListView.builder(
     }
 ),
 ```
+
+可以用来应付一些场景，例如 list 是从后端获取的数组数据。
+
+```js
+const list = [];
+// ...
+
+new ListView.builder(
+    itemCount: list.length,
+    itemBuilder: (BuildContext context, int index) {
+        const data = list[index];
+        return new Text('子项：' + data['name']);
+    }
+),
+```
