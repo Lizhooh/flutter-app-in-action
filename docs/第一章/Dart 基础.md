@@ -14,8 +14,9 @@ Dart 本身是一个很类似 Typescript 的语言，如果你有 JavaScript/ES6
 - [泛型](#泛型)
 - [模块](#模块)
 - [异步编程](#异步编程)
-- [JSON 处理](#JSON 处理)
+- [JSON 处理](#JSON%20处理)
 - [正则表达式](#正则表达式)
+- [定时器](#定时器)
 
 ## 数据类型
 在 Dart 里是强类型的，也有自动推断类型的机制。
@@ -406,18 +407,6 @@ Future<String> getIPAddress() async {
 }
 ```
 
-类似 setTimeout 的操作。
-
-```js
-// 等待 2000ms
-await new Future.delayed(const Duration(milliseconds: 2000));
-
-// 或者
-new Future.delayed(const Duration(milliseconds: 2000)).then(() {
-    // ...
-});
-```
-
 ## JSON 处理
 json 在 JavaScript 里是一个非常有优势的处理，因为 json 本身延至于 JavaScript。
 
@@ -454,4 +443,27 @@ exp.stringMatch("abc de");
 
 // 返回正则表达式的字符串表示
 exp.toString();
+```
+
+## 定时器
+因为定时器在前端里用得比较多，因此单独讲这部分。
+
+定时器使用 Timer 实现，类似 js 的 setTimeout。
+
+```js
+timer = new Timer(const Duration(milliseconds: 1500), () {
+    // ... 1500ms 后执行内
+});
+```
+
+也可以使用 **延迟操作**，返回是 Promise 哦。
+
+```js
+// 等待 2000ms
+await new Future.delayed(const Duration(milliseconds: 2000));
+
+// 或者
+new Future.delayed(const Duration(milliseconds: 2000)).then(() {
+    // ...
+});
 ```
