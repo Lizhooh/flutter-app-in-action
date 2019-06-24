@@ -46,7 +46,6 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin 
 接着，添加 TabBar 和 TabBarView。
 
 ```js
-
 Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
