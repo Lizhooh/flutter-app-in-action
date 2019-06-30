@@ -263,3 +263,70 @@ bottomNavigationBar: new Builder(
 ```
 
 ![](/../../image/20180701162739.gif)
+
+## 悬浮（吸顶）Tabs
+悬浮（吸顶）Tabs 这个功能也是比较常用的，这里就记录一下怎么实现。
+
+![](../../image/20190630172850.gif)
+
+```js
+class NestedScrollDemoPage extends StatelessWidget {
+  final _tabs = <String>['TabA', 'TabB'];
+  final String img = 'http://pic1.win4000.com/wallpaper/1/5601176e8001b.jpg';
+
+  @override
+  Widget build(BuildContext context) {
+    var getHandle = (context) => NestedScrollView.sliverOverlapAbsorberHandleFor(context);
+    var flexibleSpace = FlexibleSpaceBar(background: Image.network(img, fit: BoxFit.cover));
+
+    return Scaffold(
+      body: DefaultTabController(
+        length: _tabs.length,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerScrolled) => [
+                SliverOverlapAbsorber(
+                  handle: getHandle(context),
+                  child: SliverAppBar(
+                    pinned: true,
+                    title: Text('悬浮 Tabs'),
+                    expandedHeight: 200.0,
+                    flexibleSpace: flexibleSpace,
+                    bottom: TabBar(
+                      tabs: _tabs.map((tab) {
+                        return Container(
+                          padding: EdgeInsets.all(16),
+                          child: Text(tab, style: TextStyle(fontSize: 18.0)),
+                        );
+                      }).toList(),
+                    ),
+                    forceElevated: innerScrolled,
+                  ),
+                ),
+              ],
+          body: TabBarView(
+            children: _tabs.map((tab) {
+              return Builder(builder: (context) {
+                return CustomScrollView(
+                  // key 保证唯一性
+                  key: PageStorageKey<String>(tab),
+                  slivers: <Widget>[
+                    // 将子部件同 `SliverAppBar` 重叠部分顶出来，否则会被遮挡
+                    SliverOverlapInjector(handle: getHandle(context)),
+                    SliverFixedExtentList(
+                      delegate: SliverChildBuilderDelegate(
+                        (_, index) => Container(child: Text('我是 ${index + 1}')),
+                        childCount: 30,
+                      ),
+                      itemExtent: 30.0,
+                    ),
+                  ],
+                );
+              });
+            }).toList(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```

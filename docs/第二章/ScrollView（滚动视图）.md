@@ -63,6 +63,7 @@ SliverAppBar 有以下常用属性：
 - **leading → Leading** - 表示左侧的按钮的动作。
 - **actions → Widget[]** - 表示右侧的按钮的动作。
 - **title → String | Widget** - 标题。
+- **bottom → Widget** - 底部的内容。
 
 ```js
 new CustomScrollView(
