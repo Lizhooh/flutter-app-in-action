@@ -7,7 +7,7 @@
 ![no-shadow](/../../image/20180629215518.png)
 
 ### MaterialButton
-[MaterialButton](https://docs.flutter.io/flutter/material/MaterialButton-class.html) 是一个 Materia 风格的按钮。
+[MaterialButton](https://docs.flutter.io/flutter/material/MaterialButton-class.html) 是一个 Materia 风格的按钮，特点是默认有背景，有阴影效果。
 
 ```js
 new MaterialButton(
@@ -25,7 +25,7 @@ new MaterialButton(
 一般来说，如果需要点击事件，就要嵌套一个 Button，因为 Container、Text 等组件都没有点击事件。
 
 ### RaisedButton
-RaisedButton 与 MaterialButton 类似。
+RaisedButton 与 MaterialButton 类似，但是矩阵的。
 
 ```js
 new RaisedButton(
@@ -35,7 +35,7 @@ new RaisedButton(
 ```
 
 ### FlatButton
-FlatButton 与 MaterialButton 类似，不同的是它是透明背景的。如果一个 Container 想要点击事件时，可以使用 FlatButton 包裹，而不是 MaterialButton。因为 MaterialButton 默认带背景，而 FlatButton 默认不带背景。
+FlatButton 与 MaterialButton 类似，不同的是它是透明背景的。如果一个 Container 想要点击事件时，可以使用 FlatButton 包裹，而不是 MaterialButton。因为 MaterialButton 默认带背景且有阴影，而 FlatButton 默认不带背景。
 
 ```js
 new FlatButton(
@@ -90,5 +90,18 @@ new ButtonBar(
         new CloseButton(),
         new BackButton(),
     ],
+)
+```
+
+## InkWell
+InkWell 应该不算是按钮吧，都是它能提供的就是 `水波效果`，可以作为容器包裹一切想点击时有水波效果的组件。
+
+```js
+InkWell(
+    onTap: () { },
+    child: Container(
+        height: 50,
+        child: Text('点我'),
+    ),
 )
 ```
