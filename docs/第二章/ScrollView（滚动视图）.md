@@ -43,3 +43,65 @@ new CustomScrollView(
 ### SliverAppBar
 SliverAppBar 可以实现背景，标题，顶部导航栏联动，渐隐渐出动画。
 
+![](../../image/20190630151634.jpg)
+
+SliverAppBar 有以下常用属性：
+- **pinned → bool** - 向上滑动之后是否固定导航栏。
+- **floating → bool** - 向上滑动之后隐藏标题。
+- **expandedHeight → double** - 可滚动视图的高度。
+- **titleSpacing → double** - 标题两边的空白区域。
+- **primary → bool** - 是否显示在最上面。
+- **forceElevated → bool** - 是否显示阴影。
+- **centerTitle → bool** - 标题是否居中。
+- **textTheme → TextTheme** - 字体样式。
+- **iconTheme → IconTheme** - 图标样式。
+- **brightness → double** - 状态栏高度。
+- **automaticallyImplyLeading → double** - 与 leading 相关的设置，决定没有 leading 时是否显示空白。
+- **elevation → double** - 阴影的高度。
+- **backgroundColor → Color** - 阴影颜色。
+- **flexibleSpace → FlexibleSpace** - 堆叠在工具栏和标签栏后面。
+- **leading → Leading** - 表示左侧的按钮的动作。
+- **actions → Widget[]** - 表示右侧的按钮的动作。
+- **title → String | Widget** - 标题。
+
+```js
+new CustomScrollView(
+    slivers: <Widget>[
+        SliverAppBar(
+            leading: GestureDetector(
+                child: Icon(Icons.arrow_back),
+                onTap: () => Navigator.pop(context),
+            ),
+            automaticallyImplyLeading: true,
+            centerTitle: true,
+            actions: [Icon(Icons.archive)],
+            elevation: 4,
+            forceElevated: false,
+            backgroundColor: Colors.green,
+            brightness: Brightness.dark,
+            primary: true,
+            titleSpacing: 16,
+            expandedHeight: 200.0,
+            floating: false,
+            pinned: true,
+            snap: false,
+            flexibleSpace: new FlexibleSpaceBar(
+                title: new Text('随内容一起滑动的头部'),
+                centerTitle: true,
+                collapseMode: CollapseMode.pin,
+            ),
+        ),
+        // 这里是列表
+        new SliverFixedExtentList(
+            itemExtent: 150.0,
+            delegate: new SliverChildBuilderDelegate(
+                (context, index) => new ListTile(
+                    title: new Text('List item $index'),
+                ),
+            ),
+        )
+    ],
+),
+```
+
+> 由于 title 可以是自定义的 Widget，因此可以使用 SliverAppBar + TabView 可以实现吸顶，悬浮的 Tab 效果。
