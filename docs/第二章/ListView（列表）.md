@@ -2,12 +2,10 @@
 ## ListView（列表）
 [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html) 是最常用的滚条列表，它继承至 CustomScrollView，大多 CustomScrollView 的属性都可用。
 
-
 使用 ListView 通常会有几个步骤：
 - 构建子项内容。
 - 构建子项列表。
 - 构建 ListView。
-
 
 构建子项内容和构建子项列表。
 
@@ -15,17 +13,17 @@
 var list = ['a', 'b', 'c'];
 
 getList() {
-    Iterable<Widget> listTitles = list.map((String item) {
-        return new ListTile(
-            isThreeLine: true,
-            dense: false,
-            leading: new CircleAvatar(child: new Text(item)),
-            title: new Text('item 的标题'),
-            subtitle: new Text('item 的内容'),
-            trailing: new Icon(Icons.arrow_right, color: Colors.green),
-        );
-    });
-    return listTitles.toList();
+  Iterable<Widget> listTitles = list.map((String item) {
+    return ListTile(
+      isThreeLine: true,
+      dense: false,
+      leading: CircleAvatar(child: Text(item)),
+      title: Text('item 的标题'),
+      subtitle: Text('item 的内容'),
+      trailing: Icon(Icons.arrow_right, color: Colors.green),
+    );
+  });
+  return listTitles.toList();
 }
 
 ```
@@ -33,8 +31,8 @@ getList() {
 构建 ListView。
 
 ```js
-new ListView(
-    children: this.getList(),
+ListView(
+  children: this.getList(),
 )
 ```
 
@@ -46,24 +44,24 @@ new ListView(
 ### 自定义子项内容
 
 ```js
-new ListView(
-    children: this.list.map((String item) {
-        return new Container(
-            padding: const EdgeInsets.all(8.0),
-            child: new Row(
-                children: <Widget>[
-                    new CircleAvatar(
-                        backgroundImage: new NetworkImage(this.imgsrc),
-                        radius: 30.0,
-                    ),
-                    new Container(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: new Text('今天吃什么？今天吃什么？今天吃什么？'),
-                    ),
-                ],
-            ),
-        );
-    }).toList(),
+ListView(
+  children: this.list.map((String item) {
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: <Widget>[
+          CircleAvatar(
+            backgroundImage: NetworkImage(this.imgsrc),
+            radius: 30.0,
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text('今天吃什么？今天吃什么？今天吃什么？'),
+          ),
+        ],
+      ),
+    );
+  }).toList(),
 )
 ```
 
@@ -79,11 +77,11 @@ new ListView(
 const list = [];
 // ...
 
-new ListView.builder(
-    itemCount: 40,
-    itemBuilder: (BuildContext context, int index) {
-        return new Text('子项：' + index.toString());
-    }
+ListView.builder(
+  itemCount: 40,
+  itemBuilder: (BuildContext context, int index) {
+    return Text('子项：' + index.toString());
+  }
 ),
 ```
 
@@ -93,11 +91,11 @@ new ListView.builder(
 const list = [];
 // ...
 
-new ListView.builder(
-    itemCount: list.length,
-    itemBuilder: (BuildContext context, int index) {
-        const data = list[index];
-        return new Text('子项：' + data['name']);
-    }
+ListView.builder(
+  itemCount: list.length,
+  itemBuilder: (BuildContext context, int index) {
+    const data = list[index];
+    return Text('子项：' + data['name']);
+  }
 ),
 ```

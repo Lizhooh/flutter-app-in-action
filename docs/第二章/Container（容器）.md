@@ -6,23 +6,23 @@
 
 ```js
 new Container(
-    width: 200.0,
-    height: 200.0,
-    margin: const EdgeInsets.all(20.0),
-    decoration: new BoxDecoration(
-        color: Colors.blue[400],
-        borderRadius: new BorderRadius.all(
-            const Radius.circular(100.0),
-        ),
-        boxShadow: <BoxShadow>[
-            new BoxShadow(
-                spreadRadius: 1.0,
-                blurRadius: 5.0,
-                offset: const Offset(0.6, 1.2),
-                color: Colors.black26,
-            )
-        ]
+  width: 200.0,
+  height: 200.0,
+  margin: const EdgeInsets.all(20.0),
+  decoration: BoxDecoration(
+    color: Colors.blue[400],
+    borderRadius: BorderRadius.all(
+      const Radius.circular(100.0),
     ),
+    boxShadow: <BoxShadow>[
+      BoxShadow(
+        spreadRadius: 1.0,
+        blurRadius: 5.0,
+        offset: const Offset(0.6, 1.2),
+        color: Colors.black26,
+      ),
+    ],
+  ),
 ),
 ```
 
@@ -44,12 +44,12 @@ ConstrainedBox 是一个带约束的容器，只有 width，height 的大小约�
 
 ```js
 new ConstrainedBox(
-    constraints: new BoxConstraints(
-        maxHeight: 100.0,
-        maxWidth: 100.0,
-        minHeight: 50.0,
-        minWidth: 50.0
-    ),
-    child: new Image.network(this.imgsrc),
+  constraints: BoxConstraints(
+    maxHeight: 100.0,
+    maxWidth: 100.0,
+    minHeight: 50.0,
+    minWidth: 50.0
+  ),
+  child: Image.network(this.imgsrc),
 )
 ```

@@ -23,47 +23,47 @@ AppBar 有以下常用属性：
 ```js
 // 返回每个隐藏的菜单项
 SelectView(IconData icon, String text, String id) {
-    return new PopupMenuItem<String>(
-        value: id,
-        child: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-                new Icon(icon, color: Colors.blue),
-                new Text(text),
-            ],
-        )
-    );
+  return PopupMenuItem<String>(
+    value: id,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+          Icon(icon, color: Colors.blue),
+          Text(text),
+      ],
+    )
+  );
 }
 
-appBar: new AppBar(
-    title: new Text('首页'),
-    leading: new Icon(Icons.home),
-    backgroundColor: Colors.blue,
-    centerTitle: true,
-    actions: <Widget>[
-        // 非隐藏的菜单
-        new IconButton(
-            icon: new Icon(Icons.add_alarm),
-            tooltip: 'Add Alarm',
-            onPressed: () {}
-        ),
-        // 隐藏的菜单
-        new PopupMenuButton<String>(
-            itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-                this.SelectView(Icons.message, '发起群聊', 'A'),
-                this.SelectView(Icons.group_add, '添加服务', 'B'),
-                this.SelectView(Icons.cast_connected, '扫一扫码', 'C'),
-            ],
-            onSelected: (String action) {
-                // 点击选项的时候
-                switch (action) {
-                    case 'A': break;
-                    case 'B': break;
-                    case 'C': break;
-                }
-            },
-        ),
-    ],
+appBar: AppBar(
+  title: Text('首页'),
+  leading: Icon(Icons.home),
+  backgroundColor: Colors.blue,
+  centerTitle: true,
+  actions: <Widget>[
+    // 非隐藏的菜单
+    IconButton(
+      icon: Icon(Icons.add_alarm),
+      tooltip: 'Add Alarm',
+      onPressed: () {}
+    ),
+    // 隐藏的菜单
+    PopupMenuButton<String>(
+      itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
+        this.SelectView(Icons.message, '发起群聊', 'A'),
+        this.SelectView(Icons.group_add, '添加服务', 'B'),
+        this.SelectView(Icons.cast_connected, '扫一扫码', 'C'),
+      ],
+      onSelected: (String action) {
+        // 点击选项的时候
+        switch (action) {
+            case 'A': break;
+            case 'B': break;
+            case 'C': break;
+        }
+      },
+    ),
+  ],
 ),
 ```
 
@@ -79,11 +79,12 @@ onTap: () async {
     context: context,
     position: RelativeRect.fromLTRB(100.0, 200.0, 100.0, 100.0),
     items: <PopupMenuItem<String>>[
-      new PopupMenuItem<String>( value: 'value01', child: new Text('Item One')),
-      new PopupMenuItem<String>( value: 'value02', child: new Text('Item Two')),
-      new PopupMenuItem<String>( value: 'value03', child: new Text('Item Three')),
-      new PopupMenuItem<String>( value: 'value04', child: new Text('I am Item Four'))
-    ] );
+      PopupMenuItem<String>( value: 'value01', child: Text('Item One')),
+      PopupMenuItem<String>( value: 'value02', child: Text('Item Two')),
+      PopupMenuItem<String>( value: 'value03', child: Text('Item Three')),
+      PopupMenuItem<String>( value: 'value04', child: Text('I am Item Four'))
+    ]
+  );
 },
 ```
 

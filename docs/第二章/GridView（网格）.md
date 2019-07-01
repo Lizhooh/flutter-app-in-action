@@ -12,38 +12,38 @@ String imgsrc = 'http://5b0988e595225.cdn.sohucs.com/images' +
             '/20171218/342e43903694448b91698b5ce7623314.jpeg';
 
 List<Widget> buildGridTileList(int number) {
-    List<Widget> widgetList = new List();
+  List<Widget> widgetList = new List();
 
-    for (int i = 0; i < number; i++) {
-        widgetList.add(new Container(
-            decoration: new BoxDecoration(
-                color: Colors.white,
-                image: new DecorationImage(
-                    image: new NetworkImage(this.imgsrc),
-                    fit: BoxFit.cover,
-                ),
-                shape: BoxShape.circle,
-                boxShadow: <BoxShadow>[
-                    new BoxShadow(
-                        offset: new Offset(0.0, 1.0),
-                        blurRadius: 2.0,
-                        color: const Color(0xffaaaaaa),
-                    ),
-                ],
-            ),
-        ));
-    }
-    return widgetList;
+  for (int i = 0; i < number; i++) {
+    widgetList.add(Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: NetworkImage(this.imgsrc),
+          fit: BoxFit.cover,
+        ),
+        shape: BoxShape.circle,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              offset: Offset(0.0, 1.0),
+              blurRadius: 2.0,
+              color: const Color(0xffaaaaaa),
+          ),
+        ],
+      ),
+    ));
+  }
+  return widgetList;
 }
 
 // GridView 默认滚动方向是垂直的。
 new GridView.count(
-    padding: const EdgeInsets.all(8.0),
-    primary: false,
-    mainAxisSpacing: 12.0,              // 竖向间距
-    crossAxisCount: 3,                  // 横向 Item 的个数
-    crossAxisSpacing: 12.0,             // 横向间距
-    children: buildGridTileList(15),
+  padding: const EdgeInsets.all(8.0),
+  primary: false,
+  mainAxisSpacing: 12.0,              // 竖向间距
+  crossAxisCount: 3,                  // 横向 Item 的个数
+  crossAxisSpacing: 12.0,             // 横向间距
+  children: buildGridTileList(15),
 ),
 ```
 

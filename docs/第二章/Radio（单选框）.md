@@ -5,16 +5,16 @@
 ![no-shadow](/../../image/20180630213144.png)
 
 ```js
-new Radio(
-    groupValue: this.radio,
-    activeColor: Colors.blue,
-    value: 'aaa',
-    onChanged: (String val) {
-        // val 与 value 的类型对应
-        this.setState(() {
-            this.radio = val;  // aaa
-        });
-    },
+Radio(
+  groupValue: this.radio,
+  activeColor: Colors.blue,
+  value: 'aaa',
+  onChanged: (String val) {
+    // val 与 value 的类型对应
+    this.setState(() {
+      this.radio = val;  // aaa
+    });
+  },
 ),
 ```
 

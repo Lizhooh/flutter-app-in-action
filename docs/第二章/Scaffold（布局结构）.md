@@ -15,13 +15,13 @@ Scaffold 有下面几个主要属性：
 ```js
 @override
 Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-            title: new Text('应用'),
-        ),
-        body: new Center(
-            child: new Text('Hello'),
-        ),
-    );
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('应用'),
+    ),
+    body: Center(
+      child: Text('Hello'),
+    ),
+  );
 }
 ```

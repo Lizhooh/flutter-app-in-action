@@ -6,14 +6,14 @@
 
 ```js
 new TextField(
-    decoration: const InputDecoration(
-        hintText: '帐号/邮箱',
-        contentPadding: const EdgeInsets.all(10.0),
-    ),
-    // 当 value 改变的时候，触发
-    onChanged: (val) {
-        print(val);
-    }
+  decoration: const InputDecoration(
+    hintText: '帐号/邮箱',
+    contentPadding: const EdgeInsets.all(10.0),
+  ),
+  // 当 value 改变的时候，触发
+  onChanged: (val) {
+    print(val);
+  }
 ),
 ```
 
@@ -43,16 +43,16 @@ TextField 有以下常用属性：
 
 ```js
 new TextField(
-    controller: new TextEditingController(text: this.id),
-    decoration: const InputDecoration(
-        hintText: '帐号/邮箱',
-        contentPadding: const EdgeInsets.all(10.0),
-    ),
-    onChanged: (val) {
-        this.setState(() {
-            this.id = val;
-        });
-    },
+  controller: TextEditingController(text: this.id),
+  decoration: const InputDecoration(
+    hintText: '帐号/邮箱',
+    contentPadding: const EdgeInsets.all(10.0),
+  ),
+  onChanged: (val) {
+    this.setState(() {
+      this.id = val;
+    });
+  },
 ),
 ```
 

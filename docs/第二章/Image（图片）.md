@@ -5,23 +5,22 @@
 [Image](https://docs.flutter.io/flutter/widgets/Image-class.html) 是一个用于展示图片的组件。支持 JPEG、PNG、GIF、Animated GIF、WebP、Animated WebP、BMP 和 WBMP 等格式。
 
 Image 有许多的静态函数：
-- **new Image.asset** - 用于从资源目录的显示图片。
-- **new Image.network** - 用于从网络上显示图片。
-- **new Image.file** - 用于从文件里显示图片。
-- **new Image.memory** - 用于从内存里（Uint8List）显示图片。
+- **Image.asset** - 用于从资源目录的显示图片。
+- **Image.network** - 用于从网络上显示图片。
+- **Image.file** - 用于从文件里显示图片。
+- **Image.memory** - 用于从内存里（Uint8List）显示图片。
 
 ```js
 // 资源图片
-new Image.asset('imgs/logo.jpeg'),
+Image.asset('imgs/logo.jpeg'),
 //网络图片
-new Image.network(
-    'https://flutter.io/images/homepage/header-illustration.png'),
+Image.network('https://flutter.io/images/homepage/header-illustration.png'),
 // 本地文件图片
-new Image.file(new File("/Users/gs/Downloads/1.jpeg")),
+Image.file(File("/Users/gs/Downloads/1.jpeg")),
 // Uint8List图片
-new Image.memory(bytes),
+Image.memory(bytes),
 //使用ImageProvider加载图片
-new Image(image: new NetworkImage("https://flutter.io/images/homepage/screenshot-2.png"))
+Image(image: NetworkImage("https://flutter.io/images/homepage/screenshot-2.png"))
 ```
 
 Image 有以下常用属性：
@@ -44,9 +43,9 @@ Image 是不支持圆角和阴影的，目前可以通过使用 CircleAvatar 和
 var img = 'https://b-ssl.duitang.com/uploads/item/' +
         '201602/15/20160215235057_EU3tS.thumb.700_0.jpeg';
 
-new CircleAvatar(
-    backgroundImage: new NetworkImage(url),
-    radius: 100.0,      // --> 半径越大，图片越大
+CircleAvatar(
+  backgroundImage: NetworkImage(url),
+  radius: 100.0,      // --> 半径越大，图片越大
 ),
 ```
 
@@ -55,33 +54,39 @@ new CircleAvatar(
 使用 Container 实现，其原理是把图片放在 decoration 里，而不是 child 里，因为把图片放在 child 里并设置 borderRadius 时会出现一个图片穿透的问题，Container 还没有 overflow 属性。
 
 ```js
-new Container(
-    width: 200.0,
-    height: 200.0,
-    margin: const EdgeInsets.all(20.0),
-    decoration: new BoxDecoration(
-        color: Colors.white,
-        image: new DecorationImage(image: new NetworkImage(this.imgsrc), fit: BoxFit.cover),
-        shape: BoxShape.circle,
+Container(
+  width: 200.0,
+  height: 200.0,
+  margin: const EdgeInsets.all(20.0),
+  decoration: BoxDecoration(
+    color: Colors.white,
+    image: DecorationImage(
+      image: NetworkImage(this.imgsrc),
+      fit: BoxFit.cover,
     ),
+    shape: BoxShape.circle,
+  ),
 ),
 ```
 
 上面实现的都是一个圆形图片，下面的实现一个真正的圆角图片。
 
 ```js
-new Container(
-    width: 200.0,
-    height: 200.0,
-    margin: const EdgeInsets.all(20.0),
-    decoration: new BoxDecoration(
-        color: Colors.white,
-        image: new DecorationImage(image: new NetworkImage(this.imgsrc), fit: BoxFit.cover),
-        shape: BoxShape.rectangle,              // <-- 这里需要设置为 rectangle
-        borderRadius: new BorderRadius.all(
-            const Radius.circular(20.0),        // <-- rectangle 时，BorderRadius 才有效
-        ),
+Container(
+  width: 200.0,
+  height: 200.0,
+  margin: const EdgeInsets.all(20.0),
+  decoration: BoxDecoration(
+    color: Colors.white,
+    image: DecorationImage(
+      image: NetworkImage(this.imgsrc),
+      fit: BoxFit.cover
     ),
+    shape: BoxShape.rectangle,            // <-- 这里需要设置为 rectangle
+    borderRadius: BorderRadius.all(
+      const Radius.circular(20.0),        // <-- rectangle 时，BorderRadius 才有效
+    ),
+  ),
 ),
 ```
 
@@ -98,36 +103,36 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
 
 class MemoryImageDemo extends StatefulWidget {
-    _MemoryImageDemoState createState() => _MemoryImageDemoState();
+  _MemoryImageDemoState createState() => _MemoryImageDemoState();
 }
 
 class _MemoryImageDemoState extends State<MemoryImageDemo> {
-    Uint8List bytes;
+  Uint8List bytes;
 
-    void initState() {
-        super.initState();
-        // 加载图片
-        rootBundle.load('assets/images/food01.jpeg').then((data) {
-            if (!mounted) return;
-            setState(() {
-                // 读取字节码
-                bytes = data.buffer.asUint8List();
-            });
-        });
-    }
+  void initState() {
+    super.initState();
+    // 加载图片
+    rootBundle.load('assets/images/food01.jpeg').then((data) {
+      if (!mounted) return;
+      setState(() {
+          // 读取字节码
+          bytes = data.buffer.asUint8List();
+      });
+    });
+  }
 
-    @override
-    Widget build(BuildContext context) {
-        final decoration =  BoxDecoration(
-            image: bytes == null ? null : DecorationImage(
-                image: MemoryImage(bytes, scale: 1.0),
-            ),
-        );
-        return Container(
-            width: 300.0,
-            height: 300.0,
-            decoration: decoration,
-        );
-    }
+  @override
+  Widget build(BuildContext context) {
+    final decoration =  BoxDecoration(
+      image: bytes == null ? null : DecorationImage(
+        image: MemoryImage(bytes, scale: 1.0),
+      ),
+    );
+    return Container(
+      width: 300.0,
+      height: 300.0,
+      decoration: decoration,
+    );
+  }
 }
 ```

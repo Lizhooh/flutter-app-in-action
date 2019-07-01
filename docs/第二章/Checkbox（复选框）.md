@@ -7,14 +7,14 @@
 
 ```js
 new Checkbox(
-    value: this.check,
-    activeColor: Colors.blue,
-    onChanged: (bool val) {
-        // val 是布尔值
-        this.setState(() {
-            this.check = !this.check;
-        });
-    },
+  value: this.check,
+  activeColor: Colors.blue,
+  onChanged: (bool val) {
+    // val 是布尔值
+    this.setState(() {
+      this.check = !this.check;
+    });
+  },
 ),
 ```
 
@@ -30,14 +30,14 @@ CheckboxListTile 是一个 Checkbox 的上层封装，它的外观是提供类�
 
 ```js
 new CheckboxListTile(
-    secondary: const Icon(Icons.shutter_speed),
-    title: const Text('硬件加速'),
-    value: this.check,
-    onChanged: (bool value) {
-        setState(() {
-            this.check = !this.check;
-        });
-    },
+  secondary: const Icon(Icons.shutter_speed),
+  title: const Text('硬件加速'),
+  value: this.check,
+  onChanged: (bool value) {
+    setState(() {
+      this.check = !this.check;
+    });
+  },
 ),
 ```
 

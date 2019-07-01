@@ -5,14 +5,14 @@
 ![no-shadow](/../../image/20180630214538.png)
 
 ```js
-new Switch(
-    value: this.check,
-    activeColor: Colors.blue,     // 激活时原点颜色
-    onChanged: (bool val) {
-        this.setState(() {
-            this.check = !this.check;
-        });
-    },
+Switch(
+  value: this.check,
+  activeColor: Colors.blue,     // 激活时原点颜色
+  onChanged: (bool val) {
+    this.setState(() {
+      this.check = !this.check;
+    });
+  },
 )
 ```
 

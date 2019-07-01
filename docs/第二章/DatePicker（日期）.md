@@ -6,41 +6,40 @@
 
 ```js
 Future<DateTime> showDatePicker ({
-    @required BuildContext context, // 上下文
-    @required DateTime initialDate, // 初始日期
-    @required DateTime firstDate,   // 日期范围，开始
-    @required DateTime lastDate,    // 日期范围，结尾
-    SelectableDayPredicate selectableDayPredicate,
-    DatePickerMode initialDatePickerMode: DatePickerMode.day,
-    Locale locale,                  // 国际化
-    TextDirection textDirection,
+  @required BuildContext context, // 上下文
+  @required DateTime initialDate, // 初始日期
+  @required DateTime firstDate,   // 日期范围，开始
+  @required DateTime lastDate,    // 日期范围，结尾
+  SelectableDayPredicate selectableDayPredicate,
+  DatePickerMode initialDatePickerMode: DatePickerMode.day,
+  Locale locale,                  // 国际化
+  TextDirection textDirection,
 });
 
 Future<TimeOfDay> showTimePicker({
-    @required BuildContext context,
-    @required TimeOfDay initialTime
+  @required BuildContext context,
+  @required TimeOfDay initialTime,
 });
 ```
-
 
 ![](/../../image/20180630231135.png)
 
 ```js
 new MaterialButton(
-    child: new Text('选择日期'),
-    onPressed: () {
-        // 调用函数打开
-        showDatePicker(
-            context: context,
-            initialDate: new DateTime.now(),
-            firstDate: new DateTime.now().subtract(new Duration(days: 30)), // 减 30 天
-            lastDate: new DateTime.now().add(new Duration(days: 30)),       // 加 30 天
-        ).then((DateTime val) {
-            print(val);   // 2018-07-12 00:00:00.000
-        }).catchError((err) {
-            print(err);
-        });
-    },
+  child: Text('选择日期'),
+  onPressed: () {
+    // 调用函数打开
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now().subtract(Duration(days: 30)), // 减 30 天
+      lastDate: DateTime.now().add(Duration(days: 30)),       // 加 30 天
+    ).then((DateTime val) {
+      print(val);   // 2018-07-12 00:00:00.000
+    }).catchError((err) {
+      print(err);
+    });
+  },
 ),
 ```
 
@@ -51,17 +50,17 @@ showDatePicker 打开的面板样式是系统自带的，在不同版本的 Andr
 
 ```js
 new MaterialButton(
-    child: new Text('选择时间'),
-    onPressed: () {
-        showTimePicker(
-            context: context,
-            initialTime: new TimeOfDay.now(),
-        ).then((val) {
-            print(val);
-        }).catchError((err) {
-            print(err);
-        });
-    },
+  child: Text('选择时间'),
+  onPressed: () {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((val) {
+      print(val);
+    }).catchError((err) {
+      print(err);
+    });
+  },
 )
 ```
 
@@ -69,7 +68,6 @@ showTimePicker 打开的面板样式是系统自带的，在不同版本的 Andr
 
 
 ![](/../../image/20180630234031.png)
-
 
 
 注意了，DatePicker 默认是英文说明的，就算手机设置为中文。如果需要是中文说明，则需要自己做 **国际化** 处理。

@@ -4,9 +4,9 @@
 
 ```js
 new Icon(
-    Icons.add_a_photo,
-    size: 20.0,
-    color: const Color.fromRGBO(255, 0, 0, 0.7),,
+  Icons.add_a_photo,
+  size: 20.0,
+  color: const Color.fromRGBO(255, 0, 0, 0.7),,
 ),
 ```
 
@@ -18,7 +18,7 @@ new Icon(
 
 ```js
 var MyIcon(IconData icon) {
-    return new Icon(icon);
+  return Icon(icon);
 }
 
 MyIcon(Icons.add_a_photo);

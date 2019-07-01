@@ -11,12 +11,12 @@
 
 ```js
 new MaterialButton(
-    color: Colors.blue,
-    textColor: Colors.white,
-    child: new Text('点我'),
-    onPressed: () {
-        // ...
-    },
+  color: Colors.blue,
+  textColor: Colors.white,
+  child: Text('点我'),
+  onPressed: () {
+      // ...
+  },
 )
 ```
 
@@ -29,8 +29,8 @@ RaisedButton 与 MaterialButton 类似，但是矩阵的。
 
 ```js
 new RaisedButton(
-    child: new Text('点我'),
-    onPressed: () {},
+  child: Text('点我'),
+  onPressed: () {},
 )
 ```
 
@@ -39,8 +39,8 @@ FlatButton 与 MaterialButton 类似，不同的是它是透明背景的。如�
 
 ```js
 new FlatButton(
-    child: new Text('点我'),
-    onPressed: () {},
+  child: Text('点我'),
+  onPressed: () {},
 )
 ```
 
@@ -49,11 +49,11 @@ new FlatButton(
 
 ```js
 new IconButton(
-    icon: new Icon(Icons.volume_up),
-    tooltip: 'Increase volume by 10%',
-    onPressed: () {
-        // ...
-    },
+  icon: Icon(Icons.volume_up),
+  tooltip: 'Increase volume by 10%',
+  onPressed: () {
+      // ...
+  },
 )
 ```
 
@@ -65,14 +65,14 @@ new IconButton(
 
 ```js
 new Scaffold(
-    // ...
-    floatingActionButton: new FloatingActionButton(
-        onPressed: () {},
-        child: new Icon(Icons.add_a_photo),
-        elevation: 3.0,
-        highlightElevation: 2.0,
-        backgroundColor: Colors.red,        // 红色
-    ),
+  // ...
+  floatingActionButton: FloatingActionButton(
+    onPressed: () {},
+    child: Icon(Icons.add_a_photo),
+    elevation: 3.0,
+    highlightElevation: 2.0,
+    backgroundColor: Colors.red,        // 红色
+  ),
 )
 ```
 
@@ -86,10 +86,10 @@ ButtonBar 是一个布局组件，可以让 Button 排列在一行。
 
 ```js
 new ButtonBar(
-    children: <Widget>[
-        new CloseButton(),
-        new BackButton(),
-    ],
+  children: <Widget>[
+    CloseButton(),
+    BackButton(),
+  ],
 )
 ```
 
@@ -98,10 +98,10 @@ InkWell 应该不算是按钮吧，都是它能提供的就是 `水波效果`，
 
 ```js
 InkWell(
-    onTap: () { },
-    child: Container(
-        height: 50,
-        child: Text('点我'),
-    ),
+  onTap: () { },
+  child: Container(
+      height: 50,
+      child: Text('点我'),
+  ),
 )
 ```

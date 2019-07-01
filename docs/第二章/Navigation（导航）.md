@@ -6,6 +6,10 @@
 
 在 Flutter 里导航器使用栈的结构管理页面，当需要添加一个页面时，使用入栈的方式。当需要退出一个页面时，使用出栈的方式。也可以不入栈而是直接替换当前页面。
 
+**Navigator 转场动画：**
+- MaterialPageRoute（Android 风格的转场动画）
+- CupertinoPageRoute（IOS 风格的转场动画）
+
 ### 路由表
 移动应用程序通常管理大量的路由，通过名称来引用它们通常是最容易的。
 
@@ -15,15 +19,15 @@
 
 ```js
 void main() {
-    runApp(new MaterialApp(
-        home: new MyAppHome(),
-        // 路由
-        routes: <String, WidgetBuilder> {
-            '/a': (BuildContext context) => new MyPage(title: 'page A'),
-            '/b': (BuildContext context) => new MyPage(title: 'page B'),
-            '/c': (BuildContext context) => new MyPage(title: 'page C'),
-        },
-    ));
+  runApp(new MaterialApp(
+    home: new MyAppHome(),
+    // 路由
+    routes: <String, WidgetBuilder> {
+      '/a': (BuildContext context) => new MyPage(title: 'page A'),
+      '/b': (BuildContext context) => new MyPage(title: 'page B'),
+      '/c': (BuildContext context) => new MyPage(title: 'page C'),
+    },
+  ));
 }
 ```
 
@@ -41,21 +45,21 @@ Navigator.pushNamed(context, '/b');
 ```js
 String id = 'abc';                                              // <--- id
 
-Navigator.push(context, new MaterialPageRoute<void> (
-    // 新的页面
-    builder: (BuildContext context) {
-        return Scaffold(
-            body: Center(
-                child: FlatButton(
-                    child: Text('POP'),
-                    onPressed: () {
-                        print(this.id);                         // <--- id
-                        Navigator.pop(context);
-                    },
-                ),
-            ),
-        );
-    },
+Navigator.push(context, new MaterialPageRoute(
+  // 新的页面
+  builder: (BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: FlatButton(
+          child: Text('POP'),
+          onPressed: () {
+            print(this.id);                         // <--- id
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  },
 ));
 ```
 
@@ -65,13 +69,13 @@ Navigator.push(context, new MaterialPageRoute<void> (
 var id = 'abc';
 
 void main() {
-    runApp(new MaterialApp(
-        home: new MyAppHome(),
-        // 路由
-        routes: <String, WidgetBuilder> {
-            '/a': (BuildContext context) => new MyPage(id: id),
-        },
-    ));
+  runApp(new MaterialApp(
+    home: new MyAppHome(),
+    // 路由
+    routes: <String, WidgetBuilder> {
+      '/a': (BuildContext context) => new MyPage(id: id),
+    },
+  ));
 }
 ```
 
@@ -82,21 +86,21 @@ void main() {
 
 ```js
 // 在某个点击事件里
-Navigator.push(context, new MaterialPageRoute<void> (
-    // 新的页面
-    builder: (BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(title: Text('My Page')),
-            body: Center(
-                child: FlatButton(
-                    child: Text('POP'),
-                    onPressed: () {
-                        Navigator.pop(context);
-                    },
-                ),
-            ),
-        );
-    },
+Navigator.push(context, new MaterialPageRoute(
+  // 新的页面
+  builder: (BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('My Page')),
+      body: Center(
+        child: FlatButton(
+          child: Text('POP'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  },
 ));
 ```
 
@@ -105,10 +109,10 @@ Navigator.push(context, new MaterialPageRoute<void> (
 
 ```js
 new FlatButton(
-    child: new Text('POP'),
-    onPressed: () {
-        Navigator.pop(context);
-    },
+  child: new Text('POP'),
+  onPressed: () {
+    Navigator.pop(context);
+  },
 ),
 ```
 
@@ -119,7 +123,7 @@ new FlatButton(
 Navigator.pop(context, 'abc');
 
 Navigator.pushNamed(context, '/router/second').then((value) {
-    print(value);   // --> abc
+  print(value);   // --> abc
 });
 ```
 
@@ -206,16 +210,16 @@ position: new Tween<Offset>(
 
 ```js
 static FadeTransition createFadeTransition(Animation<double> animation, Widget child) {
-    return new FadeTransition(
-        opacity: animation,
-        child: new RotationTransition(
-            turns: new Tween<double>(
-                begin: 0.8,
-                end: 1.0
-            ).animate(animation),
-            child: child,
-        ),
-    );
+  return new FadeTransition(
+    opacity: animation,
+    child: new RotationTransition(
+      turns: new Tween<double>(
+        begin: 0.8,
+        end: 1.0
+      ).animate(animation),
+      child: child,
+    ),
+  );
 }
 ```
 

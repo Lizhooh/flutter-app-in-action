@@ -6,10 +6,10 @@
 
 ```js
 new BottomSheet(
-    onClosing: () {},
-    builder: (BuildContext context) {
-        return new Text('aaa');
-    },
+  onClosing: () {},
+  builder: (BuildContext context) {
+    return Text('aaa');
+  },
 ),
 ```
 
@@ -26,21 +26,21 @@ Future<T> showModalBottomSheet <T>({
 
 ```js
 new MaterialButton(
-    color: Colors.blue,
-    child: new Text('点我'),
-    onPressed: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-                return new Container(
-                    height: 300.0,
-                    child: new Image.network(this.imgurl),
-                );
-            },
-        ).then((val) {
-            print(val);
-        });
-    },
+  color: Colors.blue,
+  child: Text('点我'),
+  onPressed: () {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+            height: 300.0,
+            child: Image.network(this.imgurl),
+        );
+      },
+    ).then((val) {
+        print(val);
+    });
+  },
 ),
 ```
 

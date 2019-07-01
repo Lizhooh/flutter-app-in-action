@@ -13,31 +13,30 @@ var imgUrl = 'https://img.zcool.cn/community/0167c05901528c' +
 
 @override
 Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: (),
-        body: (),
-        drawer: new Drawer(
-            child: new Container(
-                color: const Color(0xfff1f2f3),
+  return new Scaffold(
+    appBar: (),
+    body: (),
+    drawer: Drawer(
+      child: Container(
+        color: const Color(0xfff1f2f3),
+        child: Column(
+          children: <Widget>[
+            Image.network(this.imgUrl),
 
-                child: new Column(
-                    children: <Widget>[
-                        new Image.network(this.imgUrl),
-
-                        new Container(
-                            padding: new EdgeInsets.all(20.0),
-                            child: new Row(
-                                children: <Widget>[
-                                    new Icon(Icons.home, color: Colors.black87),
-                                    new Text('首页'),
-                                ],
-                            ),
-                        )
-                    ],
-                ),
+            Container(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.home, color: Colors.black87),
+                  Text('首页'),
+                ],
+              ),
             ),
-        )
-    );
+          ],
+        ),
+      ),
+    ),
+  );
 }
 ```
 
@@ -52,13 +51,13 @@ Drawer 常用属性：
 
 ```js
 new MaterialButton(
-    color: Colors.blue,
-    textColor: Colors.white,
-    child: new Text('点我'),
-    onPressed: () {
-        Navigator.pop(context);
-        // Or Navigator.of(context).pop();
-    },
+  color: Colors.blue,
+  textColor: Colors.white,
+  child: Text('点我'),
+  onPressed: () {
+    Navigator.pop(context);
+    // Or Navigator.of(context).pop();
+  },
 ),
 ```
 
@@ -66,14 +65,14 @@ new MaterialButton(
 菜单项可以自己定义也可以使用 `ListTile` 和 `Divider` 来实现。
 
 ```js
-new ListTile(
-    title: new Text('说话心理学'),
-    trailing: new Icon(Icons.chevron_right),
+ListTile(
+  title: Text('说话心理学'),
+  trailing: Icon(Icons.chevron_right),
 ),
-new Divider(),
-new ListTile(
-    title: new Text('从众心理学'),
-    trailing: new Icon(Icons.chevron_right),
+Divider(),
+ListTile(
+  title: Text('从众心理学'),
+  trailing: Icon(Icons.chevron_right),
 ),
 ```
 

@@ -9,18 +9,18 @@ showModalBottomSheet 是具有底部滑出的弹窗方法，可以通过自定�
 
 ```dart
 onPressed: () {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-            return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                    Text('abc'),
-                    Text('abc'),
-                ],
-            );
-        }
-    );
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text('abc'),
+          Text('abc'),
+        ],
+      );
+    }
+  );
 },
 ```
 
@@ -29,16 +29,16 @@ showDialog 是从中间弹出的弹窗方法，可以通过自定义其 builder 
 
 ```dart
 showDialog(
-    context: context,
-    builder: (BuildContext context) {
-        return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-                Text('abc'),
-                Text('abc'),
-            ],
-        );
-    },
+  context: context,
+  builder: (BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text('abc'),
+        Text('abc'),
+      ],
+    );
+  },
 );
 ```
 
@@ -53,12 +53,12 @@ var overlayState = Overlay.of(context);
 
 // 创建一个 overlayEntry
 var overlayEntry = new OverlayEntry(
-    builder: (BuildContext context) {
-        // 这里就是放置弹窗的内容
-        return (
-            // ...
-        );
-    }
+  builder: (BuildContext context) {
+    // 这里就是放置弹窗的内容
+    return (
+        // ...
+    );
+  }
 );
 
 // 将 overlayEntry 插入到 root 的节点下

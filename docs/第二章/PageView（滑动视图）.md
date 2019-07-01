@@ -8,15 +8,15 @@
 - PageView.custom - 创建一个可滚动的列表，自定义子项。
 
 ```js
-new PageView.custom(
-    childrenDelegate: new SliverChildBuilderDelegate(
-        (context, index) {
-            return new Center(
-                child: new Text('$index', style: new TextStyle(fontSize: 64.0)),
-            );
-        },
-        childCount: 10,
-    ),
+PageView.custom(
+  childrenDelegate: SliverChildBuilderDelegate(
+    (context, index) {
+      return Center(
+        child: Text('$index', style: TextStyle(fontSize: 64.0)),
+      );
+    },
+    childCount: 10,
+  ),
 )
 ```
 

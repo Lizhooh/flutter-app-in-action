@@ -5,16 +5,16 @@
 ![](/../../image/20180630225727.png)
 
 ```js
-new Slider(
-    value: this.slider,
-    max: 100.0,
-    min: 0.0,
-    activeColor: Colors.blue,
-    onChanged: (double val) {
-        this.setState(() {
-            this.slider = val;
-        });
-    },
+Slider(
+  value: this.slider,
+  max: 100.0,
+  min: 0.0,
+  activeColor: Colors.blue,
+  onChanged: (double val) {
+    this.setState(() {
+      this.slider = val;
+    });
+  },
 ),
 ```
 

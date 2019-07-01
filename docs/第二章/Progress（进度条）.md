@@ -4,19 +4,19 @@
 
 ```js
 // 条形进度条
-new LinearProgressIndicator(
-    backgroundColor: Colors.blue,
-    // value: 0.2,
-    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+LinearProgressIndicator(
+  backgroundColor: Colors.blue,
+  // value: 0.2,
+  valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
 ),
-new Container(padding: const EdgeInsets.all(20.0)),
+Container(padding: const EdgeInsets.all(20.0)),
 
 // 圆形进度条
-new CircularProgressIndicator(
-    strokeWidth: 4.0,
-    backgroundColor: Colors.blue,
-    // value: 0.2,
-    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+CircularProgressIndicator(
+  strokeWidth: 4.0,
+  backgroundColor: Colors.blue,
+  // value: 0.2,
+  valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
 ),
 ```
 

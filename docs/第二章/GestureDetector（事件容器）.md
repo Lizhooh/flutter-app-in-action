@@ -4,13 +4,13 @@
 
 下面的代码，将 GestureDetector 包裹 Image，因此点击 Image 时能够触发 onTab 事件。
 
-```dart
+```js
 appBar: AppBar(
-    elevation: 0,
-    leading: GestureDetector(
-        onTap: back,
-        child: Image.asset('images/icon_arrow_back_black.png'),
-    ),
+  elevation: 0,
+  leading: GestureDetector(
+    onTap: back,
+    child: Image.asset('images/icon_arrow_back_black.png'),
+  ),
 ),
 ```
 

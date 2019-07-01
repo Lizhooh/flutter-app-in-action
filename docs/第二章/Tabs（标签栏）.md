@@ -24,22 +24,22 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin 
 
 ```js
 class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
-    var tabController;      // 先声明变量
+  var tabController;      // 先声明变量
 
-    @override
-    void initState() {
-        super.initState();
-        this.tabController = new TabController(
-            vsync: this,    // 动画效果的异步处理
-            length: 3       // tab 个数
-        );
-    }
-    // 当整个页面 dispose 时，记得把控制器也 dispose 掉，释放内存
-    @override
-    void dispose() {
-        this.tabController .dispose();
-        super.dispose();
-    }
+  @override
+  void initState() {
+    super.initState();
+    this.tabController = new TabController(
+      vsync: this,    // 动画效果的异步处理
+      length: 3       // tab 个数
+    );
+  }
+  // 当整个页面 dispose 时，记得把控制器也 dispose 掉，释放内存
+  @override
+  void dispose() {
+    this.tabController .dispose();
+    super.dispose();
+  }
 }
 ```
 
@@ -47,41 +47,32 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin 
 
 ```js
 Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            title: Text('首页'),
-        ),
-        body: TabBarView(
-            controller: this.tabController, //配置控制器
-            children: [ // Tab 内容
-                Text('aaa'),
-                Text('bbb'),
-                Text('ccc'),
-            ],
-        ),
-        // 底端栏是一个 TabBar
-        bottomNavigationBar: Material(
-            color: Colors.blue,
-            child: TabBar(
-                controller: this.tabController,
-                indicatorColor: Colors.white,
-                tabs: <Tab>[
-                    Tab(
-                        text: '主页',
-                        icon: Icon(Icons.home),
-                    ),
-                    Tab(
-                        text: '历史',
-                        icon: Icon(Icons.history),
-                    ),
-                    Tab(
-                        text: '书籍',
-                        icon: Icon(Icons.book),
-                    ),
-                ],
-            ),
-        )
-    );
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('首页'),
+    ),
+    body: TabBarView(
+      controller: this.tabController, //配置控制器
+      children: [ // Tab 内容
+        Text('aaa'),
+        Text('bbb'),
+        Text('ccc'),
+      ],
+    ),
+    // 底端栏是一个 TabBar
+    bottomNavigationBar: Material(
+      color: Colors.blue,
+      child: TabBar(
+        controller: this.tabController,
+        indicatorColor: Colors.white,
+        tabs: <Tab>[
+          Tab(text: '主页', icon: Icon(Icons.home)),
+          Tab(text: '历史', icon: Icon(Icons.history)),
+          Tab(text: '书籍', icon: Icon(Icons.book)),
+        ],
+      ),
+    )
+  );
 }
 ```
 
@@ -115,14 +106,14 @@ TabBar 与 TabBarView 的数组位置一一对应。
 
 ```js
  bottomNavigationBar: new Material(
-    color: Colors.white,
-    child: new TabBar(
-        controller: this.tabController,
-        unselectedLabelColor: Colors.black38, // <-- 一定要在 labelColor 前面。
-        labelColor: Colors.blue,
-        indicatorColor: Colors.blue,
-        tabs: <Tab>[],
-    ),
+  color: Colors.white,
+  child: new TabBar(
+    controller: this.tabController,
+    unselectedLabelColor: Colors.black38, // <-- 一定要在 labelColor 前面。
+    labelColor: Colors.blue,
+    indicatorColor: Colors.blue,
+    tabs: <Tab>[],
+  ),
 );
 ```
 
@@ -130,20 +121,20 @@ TabBar 与 TabBarView 的数组位置一一对应。
 
 ```js
 appBar: AppBar(
-    title: Material(                            // <-- 放在这里
-        color: Colors.blue,
-        child: TabBar(
-            controller: this.tabController,
-            indicatorColor: Colors.transparent,
-            unselectedLabelColor: Colors.blue[200],
-            labelColor: Colors.white,
-            tabs: <Tab>[
-                Tab(text: '主页'),
-                Tab(text: '历史'),
-                Tab(text: '书籍'),
-            ],
-        ),
+  title: Material(                            // <-- 放在这里
+    color: Colors.blue,
+    child: TabBar(
+      controller: this.tabController,
+      indicatorColor: Colors.transparent,
+      unselectedLabelColor: Colors.blue[200],
+      labelColor: Colors.white,
+      tabs: <Tab>[
+        Tab(text: '主页'),
+        Tab(text: '历史'),
+        Tab(text: '书籍'),
+      ],
     ),
+  ),
 ),
 ```
 
@@ -153,18 +144,18 @@ appBar: AppBar(
 
 ```js
 appBar: AppBar(
-    title: Icon(Icons.menu),
-    bottom: TabBar(
-        controller: this.tabController,
-        indicatorColor: Colors.transparent,
-        unselectedLabelColor: Colors.blue[200],
-        labelColor: Colors.white,
-        tabs: <Tab>[
-            Tab(text: '主页'),
-            Tab(text: '历史'),
-            Tab(text: '书籍'),
-        ],
-    )
+  title: Icon(Icons.menu),
+  bottom: TabBar(
+    controller: this.tabController,
+    indicatorColor: Colors.transparent,
+    unselectedLabelColor: Colors.blue[200],
+    labelColor: Colors.white,
+    tabs: <Tab>[
+      Tab(text: '主页'),
+      Tab(text: '历史'),
+      Tab(text: '书籍'),
+    ],
+  )
 ),
 ```
 
@@ -187,23 +178,23 @@ TabController 的使用方式非常直白，它作为 TabBar 和 TabBarView 的�
 
 ```js
 class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
-    var tabController;      // 先声明变量
+  var tabController;      // 先声明变量
 
-    @override
-    void initState() {
-        super.initState();
-        this.tabController = new TabController(
-            vsync: this,        // 动画效果的异步处理
-            length: 3           // tab 个数
-            initialIndex: 0,    // 起始位置
-        );
-    }
-    // 当整个页面 dispose 时，记得把控制器也 dispose 掉，释放内存
-    @override
-    void dispose() {
-        this.tabController.dispose();
-        super.dispose();
-    }
+  @override
+  void initState() {
+    super.initState();
+    this.tabController = new TabController(
+      vsync: this,        // 动画效果的异步处理
+      length: 3           // tab 个数
+      initialIndex: 0,    // 起始位置
+    );
+  }
+  // 当整个页面 dispose 时，记得把控制器也 dispose 掉，释放内存
+  @override
+  void dispose() {
+    this.tabController.dispose();
+    super.dispose();
+  }
 }
 ```
 
@@ -216,11 +207,11 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin 
 
 ```js
 new FlatButton(
-    child: new Text('点我'),
-    onPressed: () {
-        this.tabController.animateTo(0);
-        print(this.tabController.offset());
-    },
+  child: new Text('点我'),
+  onPressed: () {
+    this.tabController.animateTo(0);
+    print(this.tabController.offset());
+  },
 ),
 ```
 
@@ -229,13 +220,13 @@ new FlatButton(
 ```js
 @override
 void initState() {
-    super.initState();
-    this.tabController = new TabController(vsync: this, length: 3);
-    this.tabController.addListener(() {
-        if (this.tabController.indexIsChanging) {
-            print('索引改变');
-        }
-    });
+  super.initState();
+  this.tabController = new TabController(vsync: this, length: 3);
+  this.tabController.addListener(() {
+    if (this.tabController.indexIsChanging) {
+      print('索引改变');
+    }
+  });
 }
 ```
 

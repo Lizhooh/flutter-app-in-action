@@ -19,24 +19,24 @@ ScrollView 有以下常用属性：
 注：ScrollView 是一个抽象类，通常使用 CustomScrollView。
 
 ```js
-new CustomScrollView(
-    shrinkWrap: true,
-    // 内容
-    slivers: <Widget>[
-        new SliverPadding(
-            padding: const EdgeInsets.all(20.0),
-            sliver: new SliverList(
-                delegate: new SliverChildListDelegate(
-                    <Widget>[
-                        const Text('A'),
-                        const Text('B'),
-                        const Text('C'),
-                        const Text('D'),
-                    ],
-                ),
-            ),
+CustomScrollView(
+  shrinkWrap: true,
+  // 内容
+  slivers: <Widget>[
+    SliverPadding(
+      padding: const EdgeInsets.all(20.0),
+      sliver: SliverList(
+        delegate: SliverChildListDelegate(
+          <Widget>[
+            const Text('A'),
+            const Text('B'),
+            const Text('C'),
+            const Text('D'),
+          ],
         ),
-    ],
+      ),
+    ),
+  ],
 )
 ```
 
@@ -66,42 +66,42 @@ SliverAppBar 有以下常用属性：
 - **bottom → Widget** - 底部的内容。
 
 ```js
-new CustomScrollView(
-    slivers: <Widget>[
-        SliverAppBar(
-            leading: GestureDetector(
-                child: Icon(Icons.arrow_back),
-                onTap: () => Navigator.pop(context),
-            ),
-            automaticallyImplyLeading: true,
-            centerTitle: true,
-            actions: [Icon(Icons.archive)],
-            elevation: 4,
-            forceElevated: false,
-            backgroundColor: Colors.green,
-            brightness: Brightness.dark,
-            primary: true,
-            titleSpacing: 16,
-            expandedHeight: 200.0,
-            floating: false,
-            pinned: true,
-            snap: false,
-            flexibleSpace: new FlexibleSpaceBar(
-                title: new Text('随内容一起滑动的头部'),
-                centerTitle: true,
-                collapseMode: CollapseMode.pin,
-            ),
+CustomScrollView(
+  slivers: <Widget>[
+    SliverAppBar(
+      leading: GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: () => Navigator.pop(context),
+      ),
+      automaticallyImplyLeading: true,
+      centerTitle: true,
+      actions: [Icon(Icons.archive)],
+      elevation: 4,
+      forceElevated: false,
+      backgroundColor: Colors.green,
+      brightness: Brightness.dark,
+      primary: true,
+      titleSpacing: 16,
+      expandedHeight: 200.0,
+      floating: false,
+      pinned: true,
+      snap: false,
+      flexibleSpace: FlexibleSpaceBar(
+        title: Text('随内容一起滑动的头部'),
+        centerTitle: true,
+        collapseMode: CollapseMode.pin,
+      ),
+    ),
+    // 这里是列表
+    SliverFixedExtentList(
+      itemExtent: 150.0,
+      delegate: SliverChildBuilderDelegate(
+        (context, index) => ListTile(
+          title: Text('List item $index'),
         ),
-        // 这里是列表
-        new SliverFixedExtentList(
-            itemExtent: 150.0,
-            delegate: new SliverChildBuilderDelegate(
-                (context, index) => new ListTile(
-                    title: new Text('List item $index'),
-                ),
-            ),
-        )
-    ],
+      ),
+    )
+  ],
 ),
 ```
 
