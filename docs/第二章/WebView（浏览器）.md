@@ -8,3 +8,15 @@
 
 可以试试，官方的插件：https://github.com/fluttercommunity/flutter_webview_plugin，这个插件的缺点就是不能指定 WebView 的大小，必须全屏。
 
+```js
+new MaterialApp(
+  routes: {
+    '/': (_) => WebviewScaffold(
+      url: 'https://www.google.com',
+      appBar: AppBar(
+        title: Text('Widget webview'),
+      ),
+    ),
+  },
+);
+```
