@@ -319,6 +319,16 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
 
 ![](/../../image/20190701150538.gif)
 
+### 状态保护
+使用 AutomaticKeepAliveClientMixin，并重写 wantKeepAlive 方法，让状态不被回收掉。
+
+```js
+class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+}
+```
+
 ## 悬浮（吸顶）Tabs
 悬浮（吸顶）Tabs 这个功能也是比较常用的，这里就记录一下怎么实现。
 
