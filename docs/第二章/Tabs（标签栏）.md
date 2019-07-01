@@ -47,36 +47,36 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin 
 
 ```js
 Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-            title: new Text('首页'),
+    return Scaffold(
+        appBar: AppBar(
+            title: Text('首页'),
         ),
-        body: new TabBarView(
+        body: TabBarView(
             controller: this.tabController, //配置控制器
             children: [ // Tab 内容
-                new Text('aaa'),
-                new Text('bbb'),
-                new Text('ccc'),
+                Text('aaa'),
+                Text('bbb'),
+                Text('ccc'),
             ],
         ),
         // 底端栏是一个 TabBar
-        bottomNavigationBar: new Material(
+        bottomNavigationBar: Material(
             color: Colors.blue,
-            child: new TabBar(
+            child: TabBar(
                 controller: this.tabController,
                 indicatorColor: Colors.white,
                 tabs: <Tab>[
-                    new Tab(
+                    Tab(
                         text: '主页',
-                        icon: new Icon(Icons.home),
+                        icon: Icon(Icons.home),
                     ),
-                    new Tab(
+                    Tab(
                         text: '历史',
-                        icon: new Icon(Icons.history),
+                        icon: Icon(Icons.history),
                     ),
-                    new Tab(
+                    Tab(
                         text: '书籍',
-                        icon: new Icon(Icons.book),
+                        icon: Icon(Icons.book),
                     ),
                 ],
             ),
@@ -129,18 +129,18 @@ TabBar 与 TabBarView 的数组位置一一对应。
 把 TabBar 放在顶端，通过 appBar 的 title 设置。
 
 ```js
-appBar: new AppBar(
-    title: new Material(                            // <-- 放在这里
+appBar: AppBar(
+    title: Material(                            // <-- 放在这里
         color: Colors.blue,
-        child: new TabBar(
+        child: TabBar(
             controller: this.tabController,
             indicatorColor: Colors.transparent,
             unselectedLabelColor: Colors.blue[200],
             labelColor: Colors.white,
             tabs: <Tab>[
-                new Tab(text: '主页'),
-                new Tab(text: '历史'),
-                new Tab(text: '书籍'),
+                Tab(text: '主页'),
+                Tab(text: '历史'),
+                Tab(text: '书籍'),
             ],
         ),
     ),
@@ -152,17 +152,17 @@ appBar: new AppBar(
 还可以放在 bottom 处，形成一种双栏效果。
 
 ```js
-appBar: new AppBar(
-    title: new Icon(Icons.menu),
-    bottom: new TabBar(
+appBar: AppBar(
+    title: Icon(Icons.menu),
+    bottom: TabBar(
         controller: this.tabController,
         indicatorColor: Colors.transparent,
         unselectedLabelColor: Colors.blue[200],
         labelColor: Colors.white,
         tabs: <Tab>[
-            new Tab(text: '主页'),
-            new Tab(text: '历史'),
-            new Tab(text: '书籍'),
+            Tab(text: '主页'),
+            Tab(text: '历史'),
+            Tab(text: '书籍'),
         ],
     )
 ),
@@ -243,26 +243,90 @@ void initState() {
 也可以单独使用 BottomNavigationBar，不过这时候要自己设置页面的渲染内容。
 
 ```js
-bottomNavigationBar: new Builder(
-    builder: (BuildContext context) {
-        return new BottomNavigationBar(
-            items: [
-                new BottomNavigationBarItem(icon: new Icon(Icons.adb), title: new Text('首页')),
-                new BottomNavigationBarItem(icon: new Icon(Icons.adb), title: new Text('关于')),
-            ],
-            onTap: (index) {
-                Scaffold.of(context).showSnackBar(
-                    new SnackBar(
-                        content: new Text('Hello'),
-                    ),
-                );
-            },
+class Index extends StatefulWidget {
+  @override
+  State<Index> createState() => new _IndexState();
+}
+
+class NavItem {
+  NavItem({this.icon, this.title});
+
+  Icon icon;
+  String title;
+}
+
+class NavigationIconView {
+  NavigationIconView({
+    Widget icon,
+    Widget title,
+    TickerProvider vsync,
+  })  : item = new BottomNavigationBarItem(icon: icon, title: title),
+        controller = new AnimationController(
+          duration: kThemeAnimationDuration,
+          vsync: vsync,
         );
-    },
-)
+
+  final BottomNavigationBarItem item;
+  final AnimationController controller;
+}
+
+class _IndexState extends State<Index> with TickerProviderStateMixin {
+  // 激活的页面索引
+  int currentIndex = 0;
+  List<NavigationIconView> navViews;
+  // 菜单列表
+  List<NavItem> navList = [
+    NavItem(icon: Icon(Icons.assignment), title: '首页'),
+    NavItem(icon: Icon(Icons.all_inclusive), title: '想法'),
+    NavItem(icon: Icon(Icons.add_shopping_cart), title: '市场'),
+    NavItem(icon: Icon(Icons.add_alert), title: '通知'),
+    NavItem(icon: Icon(Icons.perm_identity), title: '我的'),
+  ];
+  // 页面列表
+  List pageList = [
+    new HomePage(),
+    new IdeaPage(),
+    new MarketPage(),
+    new NoticePage(),
+    new MyPage(),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    // 初始化菜单栏列表，添加一些动画效果
+    navViews = navList.map(
+      (v) => NavigationIconView(
+            icon: v.icon,
+            title: Text(v.title),
+            vsync: this,
+          ),
+    ).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // BottomNavigationBar
+    var navBar = new BottomNavigationBar(
+      items: navViews.map((NavigationIconView v) => v.item).toList(),
+      currentIndex: currentIndex,
+      fixedColor: Colors.blue,
+      type: BottomNavigationBarType.fixed,
+      onTap: (int index) => setState(() => currentIndex = index),
+    );
+
+    return new MaterialApp(
+      home: new Scaffold(
+        // 这样写有一个问题，相当于重新渲染，不会记录滚动条的位置
+        body: new Center(child: pageList[currentIndex]),
+        bottomNavigationBar: navBar,
+      ),
+    );
+  }
+}
 ```
 
-![](/../../image/20180701162739.gif)
+![](/../../image/20190701150538.gif)
 
 ## 悬浮（吸顶）Tabs
 悬浮（吸顶）Tabs 这个功能也是比较常用的，这里就记录一下怎么实现。
@@ -284,25 +348,25 @@ class NestedScrollDemoPage extends StatelessWidget {
         length: _tabs.length,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerScrolled) => [
-                SliverOverlapAbsorber(
-                  handle: getHandle(context),
-                  child: SliverAppBar(
-                    pinned: true,
-                    title: Text('悬浮 Tabs'),
-                    expandedHeight: 200.0,
-                    flexibleSpace: flexibleSpace,
-                    bottom: TabBar(
-                      tabs: _tabs.map((tab) {
-                        return Container(
-                          padding: EdgeInsets.all(16),
-                          child: Text(tab, style: TextStyle(fontSize: 18.0)),
-                        );
-                      }).toList(),
-                    ),
-                    forceElevated: innerScrolled,
-                  ),
+            SliverOverlapAbsorber(
+              handle: getHandle(context),
+              child: SliverAppBar(
+                pinned: true,
+                title: Text('悬浮 Tabs'),
+                expandedHeight: 200.0,
+                flexibleSpace: flexibleSpace,
+                bottom: TabBar(
+                  tabs: _tabs.map((tab) {
+                    return Container(
+                      padding: EdgeInsets.all(16),
+                      child: Text(tab, style: TextStyle(fontSize: 18.0)),
+                    );
+                  }).toList(),
                 ),
-              ],
+                forceElevated: innerScrolled,
+              ),
+            ),
+          ],
           body: TabBarView(
             children: _tabs.map((tab) {
               return Builder(builder: (context) {

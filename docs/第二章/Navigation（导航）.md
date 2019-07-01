@@ -44,10 +44,10 @@ String id = 'abc';                                              // <--- id
 Navigator.push(context, new MaterialPageRoute<void> (
     // 新的页面
     builder: (BuildContext context) {
-        return new Scaffold(
-            body: new Center(
-                child: new FlatButton(
-                    child: new Text('POP'),
+        return Scaffold(
+            body: Center(
+                child: FlatButton(
+                    child: Text('POP'),
                     onPressed: () {
                         print(this.id);                         // <--- id
                         Navigator.pop(context);
@@ -75,6 +75,7 @@ void main() {
 }
 ```
 
+在路由管理的章节里讲述通过上下文来传递数据。
 
 ### 入栈一个页面
 当需要入栈一个页面时，使用 `Navigator.push` 函数，这个函数接受一个上下文和新的页面结构。第二个参数是一个路由器 `MaterialPageRoute`。
@@ -84,11 +85,11 @@ void main() {
 Navigator.push(context, new MaterialPageRoute<void> (
     // 新的页面
     builder: (BuildContext context) {
-        return new Scaffold(
-            appBar: new AppBar(title: new Text('My Page')),
-            body: new Center(
-                child: new FlatButton(
-                    child: new Text('POP'),
+        return Scaffold(
+            appBar: AppBar(title: Text('My Page')),
+            body: Center(
+                child: FlatButton(
+                    child: Text('POP'),
                     onPressed: () {
                         Navigator.pop(context);
                     },
