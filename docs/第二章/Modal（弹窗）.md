@@ -7,7 +7,7 @@ Flutter 没有提供专用的弹窗容器组件，但是我们在实际开发时
 ### showModalBottomSheet
 showModalBottomSheet 是具有底部滑出的弹窗方法，可以通过自定义其 builder 实现内容的布局。
 
-```dart
+```js
 onPressed: () {
   showModalBottomSheet(
     context: context,
@@ -27,7 +27,7 @@ onPressed: () {
 ### showDialog
 showDialog 是从中间弹出的弹窗方法，可以通过自定义其 builder 实现内容的布局。
 
-```dart
+```js
 showDialog(
   context: context,
   builder: (BuildContext context) {
@@ -47,7 +47,7 @@ Overlay 的用法比较奇妙，Overlay 这个组件提供了动态的在 Flutte
 
 使用 Overlay 创建的内容会覆盖当前页面的内容，也就是在最顶层哦，Overlay 的使用方法如下：
 
-```dart
+```js
 // 创建一个 OverlayState，需要 context 哦
 var overlayState = Overlay.of(context);
 
