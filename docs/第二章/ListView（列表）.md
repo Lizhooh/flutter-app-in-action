@@ -13,7 +13,7 @@
 var list = ['a', 'b', 'c'];
 
 getList() {
-  Iterable<Widget> listTitles = list.map((String item) {
+  Iterable listTitles = list.map((String item) {
     return ListTile(
       isThreeLine: true,
       dense: false,
@@ -49,7 +49,7 @@ ListView(
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        children: <Widget>[
+        children: [
           CircleAvatar(
             backgroundImage: NetworkImage(this.imgsrc),
             radius: 30.0,

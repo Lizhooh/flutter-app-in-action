@@ -14,7 +14,7 @@ onPressed: () {
     builder: (BuildContext context) {
       return Column(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
+        children: [
           Text('abc'),
           Text('abc'),
         ],
@@ -33,7 +33,7 @@ showDialog(
   builder: (BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
+      children: [
         Text('abc'),
         Text('abc'),
       ],

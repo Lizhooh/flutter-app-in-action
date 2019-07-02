@@ -86,7 +86,7 @@ ButtonBar 是一个布局组件，可以让 Button 排列在一行。
 
 ```js
 new ButtonBar(
-  children: <Widget>[
+  children: [
     CloseButton(),
     BackButton(),
   ],

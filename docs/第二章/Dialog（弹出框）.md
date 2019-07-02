@@ -24,13 +24,13 @@ new MaterialButton(
           title: Text('标题'),
           content: SingleChildScrollView(
             child: ListBody(
-              children: <Widget>[
+              children: [
                 Text('内容 1'),
                 Text('内容 2'),
               ],
             ),
           ),
-          actions: <Widget>[
+          actions: [
             FlatButton(
               child: Text('确定'),
               onPressed: () {
@@ -63,7 +63,7 @@ new MaterialButton(
       builder: (BuildContext context) {
         return SimpleDialog(
           title: Text('选择'),
-          children: <Widget>[
+          children: [
             SimpleDialogOption(
               child: Text('选项 1'),
               onPressed: () {

@@ -20,13 +20,13 @@ Widget build(BuildContext context) {
       child: Container(
         color: const Color(0xfff1f2f3),
         child: Column(
-          children: <Widget>[
+          children: [
             Image.network(this.imgUrl),
 
             Container(
               padding: EdgeInsets.all(20.0),
               child: Row(
-                children: <Widget>[
+                children: [
                   Icon(Icons.home, color: Colors.black87),
                   Text('首页'),
                 ],

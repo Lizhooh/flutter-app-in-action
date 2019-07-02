@@ -22,12 +22,12 @@ ScrollView 有以下常用属性：
 CustomScrollView(
   shrinkWrap: true,
   // 内容
-  slivers: <Widget>[
+  slivers: [
     SliverPadding(
       padding: const EdgeInsets.all(20.0),
       sliver: SliverList(
         delegate: SliverChildListDelegate(
-          <Widget>[
+          [
             const Text('A'),
             const Text('B'),
             const Text('C'),
@@ -67,7 +67,7 @@ SliverAppBar 有以下常用属性：
 
 ```js
 CustomScrollView(
-  slivers: <Widget>[
+  slivers: [
     SliverAppBar(
       leading: GestureDetector(
           child: Icon(Icons.arrow_back),

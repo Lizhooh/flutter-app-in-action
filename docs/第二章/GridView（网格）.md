@@ -11,8 +11,8 @@
 String imgsrc = 'http://5b0988e595225.cdn.sohucs.com/images' +
             '/20171218/342e43903694448b91698b5ce7623314.jpeg';
 
-List<Widget> buildGridTileList(int number) {
-  List<Widget> widgetList = new List();
+List buildGridTileList(int number) {
+  List widgetList = new List();
 
   for (int i = 0; i < number; i++) {
     widgetList.add(Container(

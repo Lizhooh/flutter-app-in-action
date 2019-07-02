@@ -374,7 +374,7 @@ class NestedScrollDemoPage extends StatelessWidget {
                 return CustomScrollView(
                   // key 保证唯一性
                   key: PageStorageKey<String>(tab),
-                  slivers: <Widget>[
+                  slivers: [
                     // 将子部件同 `SliverAppBar` 重叠部分顶出来，否则会被遮挡
                     SliverOverlapInjector(handle: getHandle(context)),
                     SliverFixedExtentList(
