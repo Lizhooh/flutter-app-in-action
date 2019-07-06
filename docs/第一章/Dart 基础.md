@@ -451,6 +451,8 @@ exp.toString();
 定时器使用 Timer 实现，类似 js 的 setTimeout。
 
 ```js
+import 'dart:async';
+
 timer = new Timer(const Duration(milliseconds: 1500), () {
     // ... 1500ms 后执行内
 });
