@@ -10,6 +10,16 @@
 - MaterialPageRoute（Android 风格的转场动画）
 - CupertinoPageRoute（IOS 风格的转场动画）
 
+**Navigator 的方法：**
+- push - 入栈一个页面。
+- pushNamed - 入栈一个页面，根据路由名。
+- pop - 出栈页面。
+- canPop - 是否可以 pop。
+- pushAndRemoveUntil - 跳转页面并销毁当前页面。
+- pushNamedAndRemoveUntil - 使用路由名跳转页面并销毁当前页面。
+- pushReplacementNamed - 转跳并替换一个页面，使用路由名。
+- pushReplacement - 转跳并替换一个页面。
+
 ### 路由表
 移动应用程序通常管理大量的路由，通过名称来引用它们通常是最容易的。
 
