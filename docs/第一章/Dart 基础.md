@@ -88,6 +88,11 @@ Map nobleGases = const {
     18: 'argon',
 };
 
+// 列表生成器
+var s =  new List<String>.generate(100, (int index) {
+  return index.toString() + '';
+});
+
 print(gifts['first']);
 ```
 
