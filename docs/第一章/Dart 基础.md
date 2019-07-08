@@ -413,6 +413,8 @@ json 在 JavaScript 里是一个非常有优势的处理，因为 json 本身延
 在 Dart 里处理 json 有两个 API 可用：`encode`（序列化） 和 `decode`（反序列化）。
 
 ```js
+import 'dart:convert';
+
 // 把对象转为 json 字符串
 var jsonstr = json.encode([1, 2, { "a": null }]);
 
