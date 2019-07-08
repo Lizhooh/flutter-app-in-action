@@ -40,11 +40,36 @@ List buildGridTileList(int number) {
 new GridView.count(
   padding: const EdgeInsets.all(8.0),
   primary: false,
-  mainAxisSpacing: 12.0,              // 竖向间距
   crossAxisCount: 3,                  // 横向 Item 的个数
+  mainAxisSpacing: 12.0,              // 竖向间距
   crossAxisSpacing: 12.0,             // 横向间距
+  childAspectRatio: 1,                // 长比宽比例
   children: buildGridTileList(15),
 ),
 ```
 
 ![](/../../image/20180701174020.png)
+
+如果不想用 GridView.count 可以使用设置 gridDelegate。
+
+```js
+GridView(
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,                  // 横向 Item 的个数
+    mainAxisSpacing: 12.0,              // 竖向间距
+    crossAxisSpacing: 12.0,             // 横向间距
+    childAspectRatio: 1,                // 长比宽比例
+  ),
+  children: [
+    Text('a'),
+    Text('a'),
+    Text('a'),
+    Text('a'),
+    Text('a'),
+    Text('a'),
+  ],
+),
+```
+
+吐槽一下，google 的命名真的是全拼啊，这么长的命名。
+
